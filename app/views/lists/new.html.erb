@@ -1,4 +1,13 @@
 <h1>新規投稿</h1>
+<% if @list.errors.any?%> <!--エラーあり-->
+ <%=@list.errors.count %>件のエラーが発生しました
+ <ul>
+   <%@list.errors.full_messages.each do |message| %>
+   <!--すべてのエラーメッセージを配列で取得するコマンド。複数ある場合はeach文を使ってメッセージの表示をする-->
+     <li><%=message%></li>
+   <%end%>
+ </ul>
+<%end%>
 <%= form_with model:@list,url:'/lists',method: :post do |f| %>
 
 　<h4>タイトル</h4>
